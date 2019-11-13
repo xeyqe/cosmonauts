@@ -12,9 +12,9 @@
 
 <mat-form-field appearance="outline">
   <mat-label>Birth</mat-label>
-  <input matInput [(ngModel)]="localData.birth" [matDatepicker]="dp3" disabled>
-  <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+  <input matInput [min]="minDate" [max]="maxDate" [(ngModel)]="localData.birth" [matDatepicker]="dp" disabled>
+  <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+  <mat-datepicker #dp disabled="false"></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field appearance="outline">

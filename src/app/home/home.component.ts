@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngOnInit() {
-    this.querySubscription = this.apollo.watchQuery<any>({
+    this.querySubscription = this.apollo.watchQuery<Query>({
       query: gql`
         query {
           cosmonauts {
@@ -115,7 +115,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       mutation: updateCosmonaut,
       variables: { id, name, surname, birth, powers },
 
-    }).subscribe(({ data }) => {
+    }).subscribe(() => {
       const myArray = this.dataSource.data;
 
       const old = myArray.find((el) => el.id === id);
@@ -123,7 +123,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       myArray[index] = { id, name, surname, birth, powers };
 
       this.dataSource.data = myArray;
-
     }, (error) => {
       console.log('there was an error sending the query', error);
     });

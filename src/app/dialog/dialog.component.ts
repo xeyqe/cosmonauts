@@ -21,6 +21,9 @@ export class DialogComponent {
   action: string;
   localData: any;
 
+  minDate = new Date(1900, 0, 1);
+  maxDate = new Date();
+
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: UsersData) {
