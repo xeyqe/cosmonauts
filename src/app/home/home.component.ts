@@ -142,9 +142,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         const newDate = new Date(result.data.birth);
         console.log(newDate);
-        const month = newDate.getUTCMonth() + 1;
-        const day = newDate.getUTCDate() + 1;
-        const year = newDate.getUTCFullYear();
+        const month = newDate.getMonth() + 1;
+        const day = newDate.getDate();
+        const year = newDate.getFullYear();
 
         const dateString = year + '/' + month + '/' + day;
         console.log(dateString);
