@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{action}} a cosmonaut</h2>
+
+<mat-form-field appearance="outline">
+  <mat-label>Name</mat-label>
+  <input matInput [(ngModel)]="localData.name">
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Surname</mat-label>
+  <input matInput [(ngModel)]="localData.surname">
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+  <mat-label>Birth</mat-label>
+  <input matInput [(ngModel)]="localData.birth" [matDatepicker]="dp3" disabled>
+  <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+  <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+    <mat-label>Powers</mat-label>
+  <input matInput [(ngModel)]="localData.powers">
+</mat-form-field>
+<hr>
+
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [disabled]="validator()" (click)="doAction()">{{action}}</button>
+</mat-dialog-actions>
