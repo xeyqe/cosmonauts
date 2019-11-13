@@ -14,7 +14,7 @@
   <mat-label>Birth</mat-label>
   <input matInput [min]="minDate" [max]="maxDate" [(ngModel)]="localData.birth" [matDatepicker]="dp" disabled>
   <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-  <mat-datepicker #dp disabled="false"></mat-datepicker>
+  <mat-datepicker #dp startView="multi-year" disabled="false"></mat-datepicker>
 </mat-form-field>
 
 <mat-form-field appearance="outline">

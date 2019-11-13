@@ -120,6 +120,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
       const old = myArray.find((el) => el.id === id);
       const index = myArray.indexOf(old);
+      console.log(birth);
       myArray[index] = { id, name, surname, birth, powers };
 
       this.dataSource.data = myArray;
@@ -137,12 +138,16 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        console.log(result.data.birth);
+
         const newDate = new Date(result.data.birth);
+        console.log(newDate);
         const month = newDate.getUTCMonth() + 1;
-        const day = newDate.getUTCDate();
+        const day = newDate.getUTCDate() + 1;
         const year = newDate.getUTCFullYear();
 
         const dateString = year + '/' + month + '/' + day;
+        console.log(dateString);
         if (result.event === 'Add') {
           this.addCosmonaut(result.data.name, result.data.surname, dateString, result.data.powers);
         } else if (result.event === 'Update') {
