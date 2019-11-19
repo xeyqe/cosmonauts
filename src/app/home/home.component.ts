@@ -134,7 +134,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   openDialog(action: string, data: Cosmonaut) {
-    const dialogRef = this.dialog.open(DialogComponent, {data: {data, action}});
+    const dialogRef = this.dialog.open(DialogComponent, {maxHeight: '90vh', data: {data, action}});
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
