@@ -14,14 +14,16 @@ import { DialogComponent } from './dialog/dialog.component';
 
 import { FormsModule } from '@angular/forms';
 import {OverlayContainer} from '@angular/cdk/overlay';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DialogComponent
+    DialogComponent,
+    ConfirmDialogComponent
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, ConfirmDialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

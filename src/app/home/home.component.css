@@ -1,5 +1,18 @@
 table {
+  min-width: 600px;
   width: 100%;
+}
+
+td.mat-cell:last-of-type {
+  padding-right: 0px;
+}
+
+.entire-table {
+  overflow: auto;
+}
+
+.edit-buttons button {
+  margin-right: 0px !important;
 }
 
 button {

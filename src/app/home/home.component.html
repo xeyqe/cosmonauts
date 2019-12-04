@@ -1,4 +1,5 @@
 <mat-card>
+
   <button mat-icon-button color="primary" (click)="openDialog('Add', null)">
     <mat-icon>add</mat-icon>
   </button>
@@ -6,7 +7,7 @@
     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
   </mat-form-field>
 
-  <div class="mat-elevation-z8">
+  <div class="mat-elevation-z8 entire-table">
 
   <table mat-table [dataSource]="dataSource" matSort>
 
@@ -33,8 +34,15 @@
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Action </th>
       <td mat-cell *matCellDef="let element">
-        <a (click)="openDialog('Update', element)" style="color: rgb(31, 175, 31)">Edit</a> |
-        <a (click)="removeCosmonaut(element.id)" style="color: red">Delete</a>
+
+        <div class="edit-buttons">
+            <button mat-icon-button color="accent" (click)="openDialog('Update', element)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="primary" (click)="openConfirmDialog(element.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+        </div>
       </td>
     </ng-container>
 

@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 
 import { Cosmonaut, Query } from '../types';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
 export interface Cosmonaut {
   id: string;
@@ -138,8 +139,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result.data.birth);
-
         const newDate = new Date(result.data.birth);
         console.log(newDate);
         const month = newDate.getMonth() + 1;
@@ -147,12 +146,23 @@ export class HomeComponent implements OnInit, OnDestroy {
         const year = newDate.getFullYear();
 
         const dateString = year + '/' + month + '/' + day;
-        console.log(dateString);
+
         if (result.event === 'Add') {
           this.addCosmonaut(result.data.name, result.data.surname, dateString, result.data.powers);
         } else if (result.event === 'Update') {
           this.updateCosmonaut(result.data.id, result.data.name, result.data.surname, dateString, result.data.powers);
         }
+      }
+    });
+  }
+
+  openConfirmDialog(id: string) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'true') {
+        console.log(result);
+        this.removeCosmonaut(id);
       }
     });
   }
