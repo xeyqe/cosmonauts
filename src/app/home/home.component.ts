@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
-import { MatTableDataSource, MatSort, MatDialog, MatPaginator } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 
 import { Apollo } from 'apollo-angular';
-
 import gql from 'graphql-tag';
 import { Subscription } from 'rxjs';
 
@@ -10,13 +12,6 @@ import { Cosmonaut, Query } from '../types';
 import { DialogComponent } from '../dialog/dialog.component';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 
-export interface Cosmonaut {
-  id: string;
-  name: string;
-  surname: string;
-  birth: string;
-  powers: string;
-}
 
 const removeCosmonaut = gql`
   mutation removeCosmonaut($idecko: String!) {
